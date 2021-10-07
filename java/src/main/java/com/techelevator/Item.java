@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public abstract class Item {
+public abstract class Item implements Vendable{
 
 
     private String name;
@@ -16,8 +16,10 @@ public abstract class Item {
         this.name = name;
     }
 
-    public String getPrice() {
-        return price;
+    public double getPrice() {
+        double doublePrice = Double.parseDouble(price);
+
+        return doublePrice;
     }
 
     public void setPrice(String price) {
@@ -46,5 +48,11 @@ public abstract class Item {
         this.location = location;
         currentStock = 5;
 
+    }
+
+    @Override
+    public void vend() {
+        System.out.println("You chose: " + name);
+        System.out.println("This item costs: $" + price);
     }
 }

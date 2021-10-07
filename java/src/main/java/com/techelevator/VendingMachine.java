@@ -29,12 +29,17 @@ public class VendingMachine {
 
         System.out.println();
 //        System.out.println("Current Money Provided: $" + (vendingCoinBox.getBalance() / 100) + "." + (vendingCoinBox.getBalance() % 100));
-        System.out.println("$" + String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
+        System.out.println("Your balance is: $" + String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
     }
 
     public void feedMoney(int moneyIn) {
         moneyIn = moneyIn *100;
         vendingCoinBox.addFunds(moneyIn);
+    }
+    public void decreaseBalance(double itemPrice){
+        itemPrice = itemPrice *100;
+        vendingCoinBox.removeFunds(itemPrice);
+
     }
 
     public VendingMachine(){

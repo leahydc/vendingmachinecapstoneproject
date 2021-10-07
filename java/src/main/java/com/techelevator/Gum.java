@@ -6,4 +6,9 @@ public class Gum extends Item{
         super(location, name, price);
     }
 
+    @Override
+    public void vend() {
+        super.vend();
+        System.out.println("Chew Chew, Yum!");
+    }
 }

@@ -8,7 +8,7 @@ public class CoinBox {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -16,11 +16,11 @@ public class CoinBox {
         balance = 0;
     }
 
-    public void addFunds(int moneyIn) {
+    public void addFunds(double moneyIn) {
         balance = balance + moneyIn;
     }
 
-    public void removeFunds(int moneyOut) {
+    public void removeFunds(double moneyOut) {
         balance = balance - moneyOut;
     }
 
