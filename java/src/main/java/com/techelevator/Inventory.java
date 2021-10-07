@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Inventory {
 
@@ -13,18 +14,18 @@ public class Inventory {
     private static final int PRICE = 2;
     private static final int TYPE = 3;
 
-public Map makeInventory() {
+public TreeMap <String, Item> makeInventory() {
 
-    File inventoryFile = new File(" vendingmachine.csv");
+    File inventoryFile = new File("vendingmachine.csv");
 
 
 
-        Map<String,Item> inventory = new HashMap();
+        TreeMap<String,Item> inventory = new TreeMap<String, Item>();
 
         try (Scanner fileScanner = new Scanner(inventoryFile)) {
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine();
-                String[] itemDetails = line.split("|");
+                String[] itemDetails = line.split("\\|");
 
                 if (itemDetails[TYPE].equals("Candy")) {
                     Candy candy = new Candy(itemDetails[LOCATION], itemDetails[NAME], itemDetails[PRICE]);

@@ -24,11 +24,13 @@ public class VendingMachineCLI {
 
 	public void run() {
 		String [] activeMenu =  MAIN_MENU_OPTIONS;
+		VendingMachine vm = new VendingMachine();
 		while (true) {
 			String choice = (String) menu.getChoiceFromOptions(activeMenu);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				// display vending machine items
+				vm.printInventory();
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				// do purchase
 				activeMenu = PURCHASE_MENU_OPTIONS;
