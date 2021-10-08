@@ -32,7 +32,7 @@ public class CoinBox {
         int quarters = 0;
         int dimes = 0;
         int nickels = 0;
-        int pennies = 0;
+//        int pennies = 0;
 
         while (changeDue >= 0.25) {
             quarters++;
@@ -46,13 +46,9 @@ public class CoinBox {
             nickels++;
             changeDue -= 0.05;
         }
-        while (changeDue >= 0.01) {
-            pennies++;
-            changeDue -= 0.01;
-        }
 
         System.out.println("Your remaining balance is: $" + String.format("%.2f", previousBalance));
-        System.out.println("Your change is: " + quarters + " quarters, " + dimes + " dimes, " + nickels + " nickels, and " + pennies + " pennies.");
+        System.out.println("Your change is: " + quarters + " quarter(s), " + dimes + " dime(s), and " + nickels + " nickel(s).");
 
         setBalance(0);
     }

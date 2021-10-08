@@ -28,7 +28,6 @@ public class VendingMachine {
     public void printBalanceInDollars() {
 
         System.out.println();
-//        System.out.println("Current Money Provided: $" + (vendingCoinBox.getBalance() / 100) + "." + (vendingCoinBox.getBalance() % 100));
         System.out.println("Your balance is: $" + String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
     }
 
@@ -39,6 +38,20 @@ public class VendingMachine {
     public void decreaseBalance(double itemPrice){
         itemPrice = itemPrice *100;
         vendingCoinBox.removeFunds(itemPrice);
+
+    }
+
+    public void purchase(String key) {
+
+        if (this.vendingCoinBox.getBalance() >= newInventory.get(key).getPrice() && newInventory.get(key).getCurrentStock() > 0) {
+            decreaseBalance(newInventory.get(key).getPrice());
+            printBalanceInDollars();
+            newInventory.get(key).vend();
+        } else if (newInventory.get(key).getCurrentStock() < 1) {
+            System.out.println("Sorry, " + newInventory.get(key).getName() + " is out of stock!");
+        } else if (vendingCoinBox.getBalance() < newInventory.get(key).getPrice()){
+            System.out.println("You need to deposit more funds to make that purchase.");
+        }
 
     }
 
