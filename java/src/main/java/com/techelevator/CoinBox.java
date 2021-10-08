@@ -24,6 +24,10 @@ public class CoinBox {
         balance = balance - moneyOut;
     }
 
+    public String printBalance() {
+        return ("$" + String.format("%.2f", (getBalance() / 100)));
+    }
+
     public void giveChange() {
 
         double previousBalance = (getBalance() / 100.00);
@@ -32,7 +36,6 @@ public class CoinBox {
         int quarters = 0;
         int dimes = 0;
         int nickels = 0;
-//        int pennies = 0;
 
         while (changeDue >= 0.25) {
             quarters++;

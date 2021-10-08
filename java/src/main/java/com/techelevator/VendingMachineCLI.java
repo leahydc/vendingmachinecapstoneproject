@@ -84,6 +84,7 @@ public class VendingMachineCLI {
 			else if (choice.equals(MAIN_MENU_OPTION_EXIT)){
 
 				System.out.println("Umbrella Corp thanks you for stopping by!");
+				vmLog.closeLog();
 				runVendingMachine = false;
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)){
@@ -94,22 +95,25 @@ public class VendingMachineCLI {
 				if (choiceDollar.equals(ONE_DOLLAR)) {
 					vm.feedMoney(1);
 					vm.printBalanceInDollars();
-					vmLog.log(getDateForLog(), "FEED MONEY: /", ONE_DOLLAR + ".00 /$", vm.getBalanceInDollars());
+					vmLog.log(getDateForLog(), "FEED MONEY: ", ONE_DOLLAR + ".00 ", vm.getBalanceInDollars());
 					activeMenu = PURCHASE_MENU_OPTIONS;
 				}
 				else if (choiceDollar.equals(TWO_DOLLARS)) {
 					vm.feedMoney(2);
 					vm.printBalanceInDollars();
+					vmLog.log(getDateForLog(), "FEED MONEY: ", TWO_DOLLARS + ".00 ", vm.getBalanceInDollars());
 					activeMenu = PURCHASE_MENU_OPTIONS;
 				}
 				else if (choiceDollar.equals(FIVE_DOLLARS)) {
 					vm.feedMoney(5);
 					vm.printBalanceInDollars();
+					vmLog.log(getDateForLog(), "FEED MONEY: ", FIVE_DOLLARS + ".00 ", vm.getBalanceInDollars());
 					activeMenu = PURCHASE_MENU_OPTIONS;
 				}
 				else if (choiceDollar.equals(TEN_DOLLARS)) {
 					vm.feedMoney(10);
 					vm.printBalanceInDollars();
+					vmLog.log(getDateForLog(), "FEED MONEY: ", TEN_DOLLARS + ".00 ", vm.getBalanceInDollars());
 					activeMenu = PURCHASE_MENU_OPTIONS;
 				}
 
@@ -129,66 +133,82 @@ public class VendingMachineCLI {
 
 					if (choiceItem.equals(ITEM_KEYS[POSITION_ONE])) {
 						vm.purchase("A1");
+						vmLog.log(getDateForLog(), vm.newInventory.get("A1").getName() + " A1", "$" + vm.newInventory.get("A1").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_TWO])) {
 						vm.purchase("A2");
+						vmLog.log(getDateForLog(), vm.newInventory.get("A2").getName() + " A2", "$" + vm.newInventory.get("A2").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_THREE])) {
 						vm.purchase("A3");
+						vmLog.log(getDateForLog(), vm.newInventory.get("A3").getName() + " A3", "$" + vm.newInventory.get("A3").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_FOUR])) {
 						vm.purchase("A4");
+						vmLog.log(getDateForLog(), vm.newInventory.get("A4").getName() + " A4", "$" + vm.newInventory.get("A4").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_FIVE])) {
 						vm.purchase("B1");
+						vmLog.log(getDateForLog(), vm.newInventory.get("B1").getName() + " B1", "$" + vm.newInventory.get("B1").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_SIX])) {
 						vm.purchase("B2");
+						vmLog.log(getDateForLog(), vm.newInventory.get("B2").getName() + " B2", "$" + vm.newInventory.get("B2").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_SEVEN])) {
 						vm.purchase("B3");
+						vmLog.log(getDateForLog(), vm.newInventory.get("B3").getName() + " B3", "$" + vm.newInventory.get("B3").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_EIGHT])) {
 						vm.purchase("B4");
+						vmLog.log(getDateForLog(), vm.newInventory.get("B4").getName() + " B4", "$" + vm.newInventory.get("B4").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_NINE])) {
 						vm.purchase("C1");
+						vmLog.log(getDateForLog(), vm.newInventory.get("C1").getName() + " C1", "$" + vm.newInventory.get("C1").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_TEN])) {
 						vm.purchase("C2");
+						vmLog.log(getDateForLog(), vm.newInventory.get("C2").getName() + " C2", "$" + vm.newInventory.get("C2").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_ELEVEN])) {
 						vm.purchase("C3");
+						vmLog.log(getDateForLog(), vm.newInventory.get("C3").getName() + " C3", "$" + vm.newInventory.get("C3").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_TWELVE])) {
 						vm.purchase("C4");
+						vmLog.log(getDateForLog(), vm.newInventory.get("C4").getName() + " C4", "$" + vm.newInventory.get("C4").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_THIRTEEN])) {
 						vm.purchase("D1");
+						vmLog.log(getDateForLog(), vm.newInventory.get("D1").getName() + " D1", "$" + vm.newInventory.get("D1").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_FOURTEEN])) {
 						vm.purchase("D2");
+						vmLog.log(getDateForLog(), vm.newInventory.get("D2").getName() + " D2", "$" + vm.newInventory.get("D2").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_FIFTEEN])) {
 						vm.purchase("D3");
+						vmLog.log(getDateForLog(), vm.newInventory.get("D3").getName() + " D3", "$" + vm.newInventory.get("D3").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if (choiceItem.equals(ITEM_KEYS[POSITION_SIXTEEN])) {
 						vm.purchase("D4");
+						vmLog.log(getDateForLog(), vm.newInventory.get("D4").getName() + " D4", "$" + vm.newInventory.get("D4").printDoublePrice(), vm.getBalanceInDollars());
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 
@@ -196,7 +216,10 @@ public class VendingMachineCLI {
 			}
 			else if(choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)){
 
+				String balanceBeforeChange = vm.vendingCoinBox.printBalance();
+
 				vm.vendingCoinBox.giveChange();
+				vmLog.log(getDateForLog(), "GIVE CHANGE: ", balanceBeforeChange, vm.getBalanceInDollars());
 				activeMenu = MAIN_MENU_OPTIONS;
 			}
 		}

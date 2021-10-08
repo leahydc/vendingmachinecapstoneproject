@@ -24,13 +24,13 @@ public class VendingMachine {
             }
     }
     public String getBalanceInDollars() {
-        return (String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
+        return ("$" + String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
     }
 
     public void printBalanceInDollars() {
 
         System.out.println();
-        System.out.println("Your balance is: $" + getBalanceInDollars());
+        System.out.println("Your balance is: " + getBalanceInDollars());
     }
 
     public void feedMoney(int moneyIn) {

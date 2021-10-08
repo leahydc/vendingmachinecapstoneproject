@@ -12,10 +12,6 @@ public abstract class Item implements Vendable{
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getPrice() {
 
         double doublePrice = Double.parseDouble(price);
@@ -23,24 +19,12 @@ public abstract class Item implements Vendable{
         return doublePrice;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getLocation() {
         return location;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public int getCurrentStock() {
         return currentStock;
-    }
-
-    public void setCurrentStock(int currentStock) {
-        this.currentStock = currentStock;
     }
 
     public Item(String location, String name, String price){
