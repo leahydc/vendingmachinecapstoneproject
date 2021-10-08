@@ -25,4 +25,9 @@ public class Logger {
         logWriter.println(event);
         logWriter.close();
     }
+    public void log(String date, String action, String money1, String money2 ){
+
+        logWriter.println(String.format("%s %s %s %s", date,action,money1,money2));
+        logWriter.close();
+    }
 }

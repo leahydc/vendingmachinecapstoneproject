@@ -23,12 +23,14 @@ public class VendingMachine {
             else System.out.println(item.getValue().getLocation() + " : " + item.getValue().getName() + " costs $" + item.getValue().printDoublePrice() + " - " + item.getValue().getCurrentStock() + " remaining");
             }
     }
-
+    public String getBalanceInDollars() {
+        return (String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
+    }
 
     public void printBalanceInDollars() {
 
         System.out.println();
-        System.out.println("Your balance is: $" + String.format("%.2f", (vendingCoinBox.getBalance() / 100)));
+        System.out.println("Your balance is: $" + getBalanceInDollars());
     }
 
     public void feedMoney(int moneyIn) {

@@ -4,6 +4,7 @@ import com.techelevator.view.Menu;
 
 import java.io.File;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class VendingMachineCLI {
 
@@ -93,7 +94,7 @@ public class VendingMachineCLI {
 				if (choiceDollar.equals(ONE_DOLLAR)) {
 					vm.feedMoney(1);
 					vm.printBalanceInDollars();
-					vmLog.log(this.ge);
+					vmLog.log(getDateForLog(), "FEED MONEY: /", ONE_DOLLAR + ".00 /$", vm.getBalanceInDollars());
 					activeMenu = PURCHASE_MENU_OPTIONS;
 				}
 				else if (choiceDollar.equals(TWO_DOLLARS)) {
@@ -202,12 +203,14 @@ public class VendingMachineCLI {
 	}
 
 	private static String getDateForLog() {
-
 		String result = "";
+		LocalDateTime dateObj = LocalDateTime.now();
+		DateTimeFormatter formatObject = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+		String formattedDate = dateObj.format(formatObject);
 
-		LocalDateTime dt = LocalDateTime.now();
 
-		result = String.format("%tm%td%tY %tI%tM%tS", dt.getMonth(), dt.getDayOfMonth(), dt.getYear(), dt.getHour(), dt.getMinute(), dt.getSecond());
+		result = String.format(formattedDate);
+		return result;
 	}
 
 	public static void main(String[] args) {
