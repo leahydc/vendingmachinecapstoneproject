@@ -2,6 +2,8 @@ package com.techelevator;
 
 import com.techelevator.view.Menu;
 
+import java.io.File;
+
 public class VendingMachineCLI {
 
 	public static VendingMachine vm = new VendingMachine();
@@ -58,7 +60,15 @@ public class VendingMachineCLI {
 		this.menu = menu;
 	}
 
-	public void run() {
+	public void run() throws NumberFormatException{
+		File logFile = new File("log.txt");
+		boolean loggingEnabled = true;
+		Logger vmLog = null;
+		try{
+			vmLog = new Logger(logFile,true);
+		}catch(Exception e){
+			loggingEnabled = false;
+		}
 
 		String [] activeMenu =  MAIN_MENU_OPTIONS;
 
@@ -110,164 +120,217 @@ public class VendingMachineCLI {
 				//Enter map key for inventory
 				vm.printInventory();
 				activeMenu = ITEM_KEYS;
-				String choiceItem = (String) menu.getChoiceFromOptions(activeMenu);
-
+				boolean isInputValid = true;
+				String choiceItem="";
+				if(menu.getChoiceFromOptions(activeMenu) == null){
+					activeMenu=PURCHASE_MENU_OPTIONS;
+				}else {
+					choiceItem = (String) menu.getChoiceFromOptions(activeMenu);
+				}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_ONE])) {
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A1").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A1").getPrice() && vm.newInventory.get("A1").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("A1").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("A1").vend();
-						} else {
+						}else if(vm.newInventory.get("A1").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_TWO])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A2").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A2").getPrice() && vm.newInventory.get("A2").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("A2").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("A2").vend();
-						} else {
+						}else if(vm.newInventory.get("A2").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_THREE])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A3").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A3").getPrice() && vm.newInventory.get("A3").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("A3").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("A3").vend();
-						} else {
+						}else if(vm.newInventory.get("A3").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_FOUR])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A4").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A4").getPrice() && vm.newInventory.get("A4").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("A4").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("A4").vend();
-						} else {
+						}else if(vm.newInventory.get("A4").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_FIVE])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B1").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B1").getPrice() && vm.newInventory.get("B1").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("B1").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("B1").vend();
-						} else {
+						}else if(vm.newInventory.get("B1").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_SIX])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B2").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B2").getPrice() && vm.newInventory.get("B2").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("B2").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("B2").vend();
-						} else {
+						}else if(vm.newInventory.get("B2").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_SEVEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B3").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B3").getPrice() && vm.newInventory.get("B3").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("B3").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("B3").vend();
-						} else {
+						}else if(vm.newInventory.get("B3").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_EIGHT])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B4").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B4").getPrice() && vm.newInventory.get("B4").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("B4").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("B4").vend();
-						} else {
+						}else if(vm.newInventory.get("B4").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_NINE])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C1").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C1").getPrice() && vm.newInventory.get("C1").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("C1").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("C1").vend();
-						} else {
+						}else if(vm.newInventory.get("C1").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_TEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C2").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C2").getPrice() && vm.newInventory.get("C2").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("C2").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("C2").vend();
-						} else {
+						}else if(vm.newInventory.get("C2").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_ELEVEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C3").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C3").getPrice() && vm.newInventory.get("C3").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("C3").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("C3").vend();
-						} else {
+						}else if(vm.newInventory.get("C3").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_TWELVE])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C4").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C4").getPrice() && vm.newInventory.get("C4").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("C4").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("C4").vend();
-						} else {
+						}else if(vm.newInventory.get("C4").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_THIRTEEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D1").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D1").getPrice() && vm.newInventory.get("D1").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("D1").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("D1").vend();
-						} else {
+						}else if(vm.newInventory.get("D1").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_FOURTEEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D2").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D2").getPrice() && vm.newInventory.get("D2").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("D2").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("D2").vend();
-						} else {
+						}else if(vm.newInventory.get("D2").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_FIFTEEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D3").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D3").getPrice() && vm.newInventory.get("D3").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("D3").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("D3").vend();
-						} else {
+						}else if(vm.newInventory.get("D3").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 					if(choiceItem.equals(ITEM_KEYS[POSITION_SIXTEEN])){
-						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D4").getPrice()) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D4").getPrice() && vm.newInventory.get("D4").getCurrentStock()>0) {
 							vm.decreaseBalance(vm.newInventory.get("D4").getPrice());
 							vm.printBalanceInDollars();
 							vm.newInventory.get("D4").vend();
-						} else {
+						}else if(vm.newInventory.get("D4").getCurrentStock()<1){
+							System.out.println("This item is out of stock");
+						}
+						else {
 							System.out.println("You need to deposit more funds to make that purchase.");
 						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
