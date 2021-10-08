@@ -7,12 +7,12 @@ public class VendingMachineCLI {
 	public static VendingMachine vm = new VendingMachine();
 
 
-//Main Menu Display Options
+	//Main Menu Display Options
 	private static final String MAIN_MENU_OPTION_DISPLAY_ITEMS = "Display Vending Machine Items";
 	private static final String MAIN_MENU_OPTION_PURCHASE = "Purchase";
 	private static final String MAIN_MENU_OPTION_EXIT = "Exit";
 
-//Display Menu
+	//Display Menu
 	private static final String PURCHASE_MENU_OPTION_FEED_MONEY = "Feed Money";
 	private static final String PURCHASE_MENU_OPTION_SELECT_PRODUCT = "Select Product";
 	private static final String PURCHASE_MENU_OPTION_FINISH_TRANSACTION = "Finish Transaction";
@@ -23,15 +23,36 @@ public class VendingMachineCLI {
 	private static final String FIVE_DOLLARS = "$5";
 	private static final String TEN_DOLLARS = "$10";
 
-	//Arrays of menus for different screens
+	//Item Display Menu
+
+	private static final int POSITION_ONE = 0;
+	private static final int POSITION_TWO = 1;
+	private static final int POSITION_THREE = 2;
+	private static final int POSITION_FOUR = 3;
+	private static final int POSITION_FIVE = 4;
+	private static final int POSITION_SIX = 5;
+	private static final int POSITION_SEVEN = 6;
+	private static final int POSITION_EIGHT = 7;
+	private static final int POSITION_NINE = 8;
+	private static final int POSITION_TEN = 9;
+	private static final int POSITION_ELEVEN = 10;
+	private static final int POSITION_TWELVE = 11;
+	private static final int POSITION_THIRTEEN = 12;
+	private static final int POSITION_FOURTEEN = 13;
+	private static final int POSITION_FIFTEEN = 14;
+	private static final int POSITION_SIXTEEN = 15;
+
+
+	//Menu Screen Arrays
 	private static final String[] MAIN_MENU_OPTIONS = { MAIN_MENU_OPTION_DISPLAY_ITEMS, MAIN_MENU_OPTION_PURCHASE,MAIN_MENU_OPTION_EXIT };
 	private static final String[] PURCHASE_MENU_OPTIONS = { PURCHASE_MENU_OPTION_FEED_MONEY, PURCHASE_MENU_OPTION_SELECT_PRODUCT,PURCHASE_MENU_OPTION_FINISH_TRANSACTION };
 	private static final String[] DOLLAR_INPUT_VALUES = { ONE_DOLLAR, TWO_DOLLARS, FIVE_DOLLARS, TEN_DOLLARS};
-
 	private static final String[] ITEM_KEYS = vm.newInventory.keySet().toArray(new String[0]);
 
 
 	private Menu menu;
+
+	private boolean runVendingMachine = true;
 
 	public VendingMachineCLI(Menu menu) {
 		this.menu = menu;
@@ -41,7 +62,7 @@ public class VendingMachineCLI {
 
 		String [] activeMenu =  MAIN_MENU_OPTIONS;
 
-		while (true) {
+		while (runVendingMachine) {
 			String choice = (String) menu.getChoiceFromOptions(activeMenu);
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
@@ -56,7 +77,7 @@ public class VendingMachineCLI {
 			else if (choice.equals(MAIN_MENU_OPTION_EXIT)){
 				//Close coinbox
 				System.out.println("Thanks for stopping by");
-				System.exit(1);
+				runVendingMachine = false;
 			}
 			else if (choice.equals(PURCHASE_MENU_OPTION_FEED_MONEY)){
 				//Add to coin box method
@@ -90,108 +111,173 @@ public class VendingMachineCLI {
 				vm.printInventory();
 				activeMenu = ITEM_KEYS;
 				String choiceItem = (String) menu.getChoiceFromOptions(activeMenu);
-					if(choiceItem.equals(ITEM_KEYS[0])){
-						vm.decreaseBalance(vm.newInventory.get("A1").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("A1").vend();
+
+					if(choiceItem.equals(ITEM_KEYS[POSITION_ONE])) {
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A1").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("A1").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("A1").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[1])){
-						vm.decreaseBalance(vm.newInventory.get("A2").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("A2").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_TWO])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A2").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("A2").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("A2").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[2])){
-						vm.decreaseBalance(vm.newInventory.get("A3").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("A3").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_THREE])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A3").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("A3").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("A3").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[3])){
-						vm.decreaseBalance(vm.newInventory.get("A4").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("A4").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_FOUR])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("A4").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("A4").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("A4").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[4])){
-						vm.decreaseBalance(vm.newInventory.get("B1").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("B1").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_FIVE])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B1").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("B1").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("B1").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[5])){
-						vm.decreaseBalance(vm.newInventory.get("B2").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("B2").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_SIX])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B2").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("B2").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("B2").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[6])){
-						vm.decreaseBalance(vm.newInventory.get("B3").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("B3").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_SEVEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B3").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("B3").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("B3").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[7])){
-						vm.decreaseBalance(vm.newInventory.get("B4").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("B4").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_EIGHT])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("B4").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("B4").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("B4").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[8])){
-						vm.decreaseBalance(vm.newInventory.get("C1").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("C1").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_NINE])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C1").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("C1").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("C1").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[9])){
-						vm.decreaseBalance(vm.newInventory.get("C2").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("C2").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_TEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C2").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("C2").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("C2").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[10])){
-						vm.decreaseBalance(vm.newInventory.get("C3").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("C3").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_ELEVEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C3").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("C3").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("C3").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[11])){
-						vm.decreaseBalance(vm.newInventory.get("C4").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("C4").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_TWELVE])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("C4").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("C4").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("C4").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[12])){
-						vm.decreaseBalance(vm.newInventory.get("D1").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("D1").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_THIRTEEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D1").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("D1").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("D1").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[13])){
-						vm.decreaseBalance(vm.newInventory.get("D2").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("D2").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_FOURTEEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D2").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("D2").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("D2").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[14])){
-						vm.decreaseBalance(vm.newInventory.get("D3").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("D3").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_FIFTEEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D3").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("D3").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("D3").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
-					if(choiceItem.equals(ITEM_KEYS[15])){
-						vm.decreaseBalance(vm.newInventory.get("D4").getPrice());
-						vm.printBalanceInDollars();
-						vm.newInventory.get("D4").vend();
+					if(choiceItem.equals(ITEM_KEYS[POSITION_SIXTEEN])){
+						if (vm.vendingCoinBox.getBalance() >= vm.newInventory.get("D4").getPrice()) {
+							vm.decreaseBalance(vm.newInventory.get("D4").getPrice());
+							vm.printBalanceInDollars();
+							vm.newInventory.get("D4").vend();
+						} else {
+							System.out.println("You need to deposit more funds to make that purchase.");
+						}
 						activeMenu = PURCHASE_MENU_OPTIONS;
 					}
 
 				}
 			else if(choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION)){
 				//Close coinbox
-				System.out.println("Thanks for stopping by");
-				System.exit(1);
+				vm.vendingCoinBox.giveChange();
+				activeMenu = MAIN_MENU_OPTIONS;
 			}
 		}
 	}

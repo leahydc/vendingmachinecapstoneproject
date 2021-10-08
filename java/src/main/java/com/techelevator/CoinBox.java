@@ -26,5 +26,34 @@ public class CoinBox {
 
     public void giveChange() {
 
+        double previousBalance = (getBalance() / 100.00);
+        double changeDue = (getBalance() / 100.00);
+
+        int quarters = 0;
+        int dimes = 0;
+        int nickels = 0;
+        int pennies = 0;
+
+        while (changeDue >= 0.25) {
+            quarters++;
+            changeDue -= 0.25;
+        }
+        while (changeDue >= 0.10) {
+            dimes++;
+            changeDue -= 0.10;
+        }
+        while (changeDue >= 0.05) {
+            nickels++;
+            changeDue -= 0.05;
+        }
+        while (changeDue >= 0.01) {
+            pennies++;
+            changeDue -= 0.01;
+        }
+
+        System.out.println("Your remaining balance is: $" + String.format("%.2f", previousBalance));
+        System.out.println("Your change is: " + quarters + " quarters, " + dimes + " dimes, " + nickels + " nickels, and " + pennies + " pennies.");
+
+        setBalance(0);
     }
 }

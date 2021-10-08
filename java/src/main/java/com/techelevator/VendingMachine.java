@@ -18,9 +18,9 @@ public class VendingMachine {
 
         for(Map.Entry<String,Item> item: newInventory.entrySet()){
             if (item.getValue().getCurrentStock() == 0) {
-                System.out.println(item.getValue().getLocation() + " : " + item.getValue().getName() + " costs $" + item.getValue().getPrice() + " - SOLD OUT");
+                System.out.println(item.getValue().getLocation() + " : " + item.getValue().getName() + " costs $" + item.getValue().printDoublePrice() + " - SOLD OUT");
             }
-            else System.out.println(item.getValue().getLocation() + " : " + item.getValue().getName() + " costs $" + item.getValue().getPrice() + " - " + item.getValue().getCurrentStock() + " remaining");
+            else System.out.println(item.getValue().getLocation() + " : " + item.getValue().getName() + " costs $" + item.getValue().printDoublePrice() + " - " + item.getValue().getCurrentStock() + " remaining");
             }
     }
 

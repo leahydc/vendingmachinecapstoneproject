@@ -17,6 +17,7 @@ public abstract class Item implements Vendable{
     }
 
     public double getPrice() {
+
         double doublePrice = Double.parseDouble(price);
 
         return doublePrice;
@@ -50,9 +51,15 @@ public abstract class Item implements Vendable{
 
     }
 
+    public String printDoublePrice() {
+
+        return String.format("%.2f", (getPrice()));
+    }
+
     @Override
     public void vend() {
         System.out.println("You chose: " + name);
         System.out.println("This item costs: $" + price);
+        currentStock--;
     }
 }
